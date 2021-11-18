@@ -7,10 +7,15 @@
  */
 
 import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
 import PrimaryContainer from './containers';
 
 const App = () => {
-  return <PrimaryContainer />;
+  return (
+    <NavigationContainer>
+      <PrimaryContainer />
+    </NavigationContainer>
+  );
 };
 
 export default App;
