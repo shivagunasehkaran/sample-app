@@ -20,6 +20,13 @@ const Dashboard = (props) => {
     NativeModules.ActivityStarter.showToast();
   };
 
+  // get value from native iOS
+  const handleiOSNativeCall = () => {
+    NativeModules.ActivityStarter.callNativeFunction((error, events) => {
+      Alert.alert(events.value);
+    });
+  };
+
   // Logout action
   const doLogout = () => {
     props.navigation.push(ROUTES.pageNameLogin);
