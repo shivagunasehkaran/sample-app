@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     marginTop: 100,
     backgroundColor: ColourPalette.white,
   },
-  username: {
+  email: {
     height: moderateScale(40),
     marginHorizontal: 30,
     borderWidth: 0.3,
@@ -29,8 +29,20 @@ export const styles = StyleSheet.create({
     justifyContent: 'center', 
     alignItems: 'center'
   },
-  text: {
+  signup: {
+    height: moderateScale(20), 
+    marginHorizontal: 30, 
+    marginTop: 10, 
+    justifyContent: 'center', 
+    alignItems: 'center'
+  },
+  submitText: {
     color: ColourPalette.black,
     fontSize: 15 
+  },
+  signUpText: {
+    color: ColourPalette.blue,
+    fontSize: 13,
+    textDecorationLine: 'underline',
   }
 });
