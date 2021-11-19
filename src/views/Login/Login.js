@@ -7,12 +7,17 @@ import {
   TouchableOpacity,
   Alert
 } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { saveLoginDetails } from '../../actions/action';
 import * as ROUTES from '../../routes/Routes';
 import { styles } from '../Login/Login.style';
 
 const Login = (props) => {
   const [email, onChangeUsername] = React.useState('');
   const [password, onChangePassword] = React.useState('');
+
+  // redux dispatch 
+  const dispatch = useDispatch();
 
   // onsubmit validation
   const onSubmit = () => {
@@ -25,7 +30,8 @@ const Login = (props) => {
         Alert.alert('Please fill the password !!!')
         return false;
     } else {
-        props.navigation.push(ROUTES.pageNameDashboard);
+      // dispatch redux actions
+      dispatch(saveLoginDetails(email, password, true));
     }
   }
 
