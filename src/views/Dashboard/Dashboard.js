@@ -9,12 +9,16 @@ import {
   Platform,
   NativeModules
 } from 'react-native';
+import { useDispatch } from 'react-redux';
 import {moderateScale} from 'react-native-size-matters';
-import * as ROUTES from '../../routes/Routes';
+import { saveLoginDetails } from '../../actions/action';
 import { ColourPalette } from '../../assets/style/ColourPalette';
 
 const Dashboard = (props) => {
 
+  // redux dispatch 
+  const dispatch = useDispatch();
+  
   // render native android component
   const handleAndroidNativeCall = () => {
     NativeModules.ActivityStarter.showToast();
@@ -29,7 +33,8 @@ const Dashboard = (props) => {
 
   // Logout action
   const doLogout = () => {
-    props.navigation.push(ROUTES.pageNameLogin);
+     // dispatch redux actions
+     dispatch(saveLoginDetails('', '', false));
   }
 
   return (
