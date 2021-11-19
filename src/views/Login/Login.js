@@ -35,6 +35,7 @@ const Login = (props) => {
     }
   }
 
+  // redirect to register
   const doSignUp = () => {
     props.navigation.push(ROUTES.pageNameRegister);
   };
