@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
   Alert
 } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { saveRegisterDetails } from '../../actions/action';
 import * as ROUTES from '../../routes/Routes';
 import { styles } from '../Register/Register.style';
 
@@ -14,6 +16,9 @@ const Register = (props) => {
   const [email, onChangeUsername] = React.useState('');
   const [password, onChangePassword] = React.useState('');
   const [name, onChangeName] = React.useState('');
+
+  // redux dispatch 
+  const dispatch = useDispatch();
 
   // onsubmit validation
   const onSubmit = () => {
@@ -29,7 +34,9 @@ const Register = (props) => {
         Alert.alert('Please fill the name !!!')
       return false;
     }else {
-        props.navigation.push(ROUTES.pageNameDashboard);
+        // dispatch redux actions
+        dispatch(saveRegisterDetails(email, password, name));
+        props.navigation.push(ROUTES.pageNameLogin);
     }
   }
 
