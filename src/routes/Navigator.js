@@ -1,17 +1,16 @@
 import React from 'react';
+import {Platform} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 // presentational component imports
 import * as ROUTES from './Routes';
 import Login from '../views/Login';
+import Register from '../views/Register';
 import Dashboard from '../views/Dashboard';
 import Chats from '../views/Chats';
 import Settings from '../views/Settings';
 import Profile from '../views/Profile';
 import { ColourPalette } from '../assets/style/ColourPalette';
-
-// authentication flag
-const isAuthenticatedUser = false;
 
 const Stack = createStackNavigator();
 const PrimaryTab = createBottomTabNavigator();
@@ -76,24 +75,43 @@ const BottomTabs = () => {
 export const PublicRoutes = () => {
   return (
     <Stack.Navigator>
-      {
-        !isAuthenticatedUser ? (
-        <Stack.Screen
-          key={ROUTES.pageNameDashboard}
-          name={ROUTES.pageNameDashboard}
-          component={BottomTabs}
-          options={{
-            headerShown: false,
-          }}
-        />) : (<Stack.Screen
+      <Stack.Screen
           key={ROUTES.pageNameLogin}
           name={ROUTES.pageNameLogin}
           component={Login}
           options={{
             headerShown: false,
           }}
-        />)
-      }
+      />
+      <Stack.Screen
+          key={ROUTES.pageNameRegister}
+          name={ROUTES.pageNameRegister}
+          component={Register}
+          options={{
+            title: '',
+            headerShown: true,
+            headerBackTitle: 'back',
+            headerTitle:
+              Platform.OS === 'android'
+                ? 'back'
+                : null,
+          }}
+        />
+    </Stack.Navigator>
+  );
+};
+
+export const PrivateRoutes = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+          key={ROUTES.pageNameDashboard}
+          name={ROUTES.pageNameDashboard}
+          component={BottomTabs}
+          options={{
+            headerShown: false,
+          }}
+        />
     </Stack.Navigator>
   );
 };
