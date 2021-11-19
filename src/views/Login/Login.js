@@ -56,7 +56,7 @@ const Login = (props) => {
         value={password}
         placeholder="Password"
         secureTextEntry={true}
-        keyboardType="email-address"
+        keyboardType="default"
       />
       <TouchableOpacity style={styles.submit} onPress={onSubmit}>
         <Text style={styles.submitText}>{'Submit'}</Text>
